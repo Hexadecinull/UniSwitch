@@ -1,0 +1,17 @@
+{
+  "name": "@uniswitch/lang-python",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Python language plugin for UniSwitch (parser adapter + emitter). Not yet implemented, see the TODOs in src/index.ts.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@uniswitch/language-plugin-api": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  }
+}

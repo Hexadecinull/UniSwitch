@@ -1,0 +1,83 @@
+name: Release Build
+
+# Runs when a version tag is pushed (v1.2.3). Builds the CLI and desktop
+# installers for all three desktop platforms, then publishes everything as a
+# GitHub Release. Mobile builds are intentionally not included here, they need
+# platform signing credentials that don't belong in CI, see docs/BUILDING.md.
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-cli:
+    name: Build CLI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @uniswitch/core run build
+      - run: pnpm --filter @uniswitch/cli run build
+      - run: pnpm test
+      - name: Package CLI
+        run: |
+          mkdir -p release-artifacts
+          tar -czf release-artifacts/uniswitch-cli-${{ github.ref_name }}.tar.gz -C apps/cli dist package.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cli-artifact
+          path: release-artifacts/*
+
+  build-desktop:
+    name: Build desktop (${{ matrix.os }})
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @uniswitch/core run build
+      - run: pnpm --filter @uniswitch/desktop run build
+      - run: pnpm --filter @uniswitch/desktop run package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: desktop-${{ matrix.os }}
+          path: |
+            apps/desktop/dist-installers/*.AppImage
+            apps/desktop/dist-installers/*.deb
+            apps/desktop/dist-installers/*.exe
+            apps/desktop/dist-installers/*.dmg
+          if-no-files-found: ignore
+
+  publish-release:
+    name: Publish GitHub Release
+    needs: [build-cli, build-desktop]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: downloaded-artifacts
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: downloaded-artifacts/**/*
+          generate_release_notes: true

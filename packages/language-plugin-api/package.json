@@ -1,0 +1,16 @@
+{
+  "name": "@uniswitch/language-plugin-api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The interface a UniSwitch language plugin implements",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@uniswitch/core": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}

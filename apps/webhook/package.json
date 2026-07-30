@@ -1,0 +1,14 @@
+{
+  "name": "@uniswitch/webhook",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Listens for GitHub push webhooks and redeploys the self-hosted web app. See docs/DEPLOY.md.",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}

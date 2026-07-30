@@ -1,0 +1,28 @@
+# Normalize line endings for everything by default
+* text=auto eol=lf
+
+# Never touch binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+
+# Windows scripts keep CRLF
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Lockfiles: don't diff, don't let linguist count them as source
+pnpm-lock.yaml -diff linguist-generated=true
+
+# Mark generated build artifacts so GitHub doesn't include them in language stats
+dist/** linguist-generated=true
+build/** linguist-generated=true
+
+# Docs are prose, not code, for GitHub's language detector
+docs/** linguist-documentation=true
+*.md linguist-documentation=true

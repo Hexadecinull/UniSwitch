@@ -1,0 +1,38 @@
+{
+  "name": "@uniswitch/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "UniSwitch desktop app (Electron)",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "package": "electron-builder",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@uniswitch/core": "workspace:*"
+  },
+  "devDependencies": {
+    "electron": "^32.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "org.uniswitch.desktop",
+    "productName": "UniSwitch",
+    "directories": {
+      "output": "dist-installers"
+    },
+    "files": ["dist/**/*"],
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "category": "Development"
+    },
+    "win": {
+      "target": ["nsis"]
+    },
+    "mac": {
+      "target": ["dmg"],
+      "category": "public.app-category.developer-tools"
+    }
+  }
+}

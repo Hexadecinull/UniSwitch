@@ -1,0 +1,61 @@
+name: Nightly Build
+
+# Builds main every night regardless of whether anything changed, and publishes
+# it as a rolling pre-release, so there's always a "latest main, built fresh" artifact
+# to test against without waiting for a tagged release.
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # 06:00 UTC daily
+  workflow_dispatch: {} # allow manual trigger from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  nightly:
+    name: Build and publish nightly
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build all packages
+        run: pnpm build
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Package CLI artifact
+        run: |
+          mkdir -p nightly-artifacts
+          tar -czf nightly-artifacts/uniswitch-cli-nightly.tar.gz -C apps/cli dist package.json
+
+      - name: Set nightly tag
+        id: tag
+        run: echo "tag=nightly-$(date -u +%Y%m%d)" >> "$GITHUB_OUTPUT"
+
+      - name: Publish nightly release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          name: "Nightly ${{ steps.tag.outputs.tag }}"
+          prerelease: true
+          files: nightly-artifacts/*
+          body: "Automated nightly build from main at ${{ github.sha }}. Not a stable release, may contain unfinished work."

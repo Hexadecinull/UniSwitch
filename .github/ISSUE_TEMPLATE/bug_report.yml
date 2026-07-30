@@ -1,0 +1,70 @@
+name: Bug report
+description: Something didn't work as expected, including a bad or incorrect conversion.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this. If this is about a specific
+        conversion being wrong, the "input snippet" field below is the single
+        most useful thing you can provide.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where did this happen?
+      options:
+        - CLI
+        - Web app (hosted instance)
+        - Desktop app
+        - Mobile app
+        - Self-hosted deployment
+        - Not conversion-related (docs, build, CI, etc.)
+    validations:
+      required: true
+
+  - type: input
+    id: languages
+    attributes:
+      label: Language pair (if applicable)
+      description: e.g. "Python to TypeScript"
+      placeholder: source language to target language
+
+  - type: textarea
+    id: input-snippet
+    attributes:
+      label: Input code
+      description: The smallest snippet that reproduces the problem, if this is a conversion issue.
+      render: text
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include the actual output and, if relevant, what the conversion report said.
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: UniSwitch version or commit
+      placeholder: e.g. v0.3.0, or a commit SHA if running from main
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node version, browser (if the web app), anything relevant.
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Anything else?

@@ -1,0 +1,44 @@
+name: Feature request
+description: Suggest a new language, a new capability, or an improvement.
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: What kind of request is this?
+      options:
+        - New language support (source or target)
+        - New capability in an existing language pair
+        - Improvement to an existing conversion
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What are you asking for?
+      description: If this is a new language, name it and roughly how mature its tree-sitter grammar is, if you know (see docs/ARCHITECTURE.md section 4).
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why does this matter to you?
+      description: A real use case makes it much easier to prioritize than an abstract one.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Workarounds you're using now, if any
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd be interested in working on this myself
+          required: false

@@ -1,0 +1,52 @@
+name: Debug Build
+
+# Runs on every push and PR, unlike the Release workflow. This is the "does it
+# still build and pass tests" check, using unoptimized dev builds so it stays fast.
+
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: Build (debug) and test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build all packages (debug)
+        run: pnpm build
+        env:
+          NODE_ENV: development
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Upload debug build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-build-${{ github.sha }}
+          path: |
+            packages/*/dist
+            apps/*/dist
+          retention-days: 7

@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Electron
+apps/desktop/dist/
+apps/desktop/out/
+
+# Capacitor / mobile
+apps/mobile/android/
+apps/mobile/ios/
+apps/mobile/.gradle/
+
+# Env and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs
+*.log
+logs/
+pm2.log
+
+# Test and coverage
+coverage/
+.nyc_output/
+
+# Editor and OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Nightly build markers
+.nightly-version
