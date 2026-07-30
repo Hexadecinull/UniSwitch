@@ -8,9 +8,9 @@
     "typecheck": "echo \"nothing to typecheck yet, this package is mostly config and web assets\""
   },
   "dependencies": {
-    "@capacitor/android": "^6.1.0",
-    "@capacitor/core": "^6.1.0",
-    "@capacitor/ios": "^6.1.0"
+    "@capacitor/android": "^8.4.2",
+    "@capacitor/core": "^8.4.2",
+    "@capacitor/ios": "^8.4.2"
   },
   "devDependencies": {
     "@capacitor/cli": "^6.1.0"

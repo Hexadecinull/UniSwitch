@@ -5,7 +5,7 @@
   "description": "Listens for GitHub push webhooks and redeploys the self-hosted web app. See docs/DEPLOY.md.",
   "type": "module",
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "dotenv": "^17.4.2"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
