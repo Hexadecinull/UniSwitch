@@ -34,7 +34,7 @@ jobs:
         run: |
           mkdir -p release-artifacts
           tar -czf release-artifacts/uniswitch-cli-${{ github.ref_name }}.tar.gz -C apps/cli dist package.json
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: cli-artifact
           path: release-artifacts/*
@@ -58,7 +58,7 @@ jobs:
       - run: pnpm --filter @uniswitch/core run build
       - run: pnpm --filter @uniswitch/desktop run build
       - run: pnpm --filter @uniswitch/desktop run package
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: desktop-${{ matrix.os }}
           path: |
