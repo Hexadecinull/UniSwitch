@@ -14,6 +14,12 @@ updates:
     open-pull-requests-limit: 10
     labels:
       - "dependencies"
+    ignore:
+      # typescript-eslint doesn't support TS 7 yet (no stable programmatic API
+      # until TS 7.1), see https://github.com/typescript-eslint/typescript-eslint/issues/12518.
+      # Remove this once typescript-eslint adds TS 7 support.
+      - dependency-name: "typescript"
+        versions: [">=6.1.0"]
 
   - package-ecosystem: "github-actions"
     directory: "/"
