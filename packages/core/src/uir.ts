@@ -26,16 +26,15 @@ export interface UirModule extends UirNode {
   body: UirStatement[];
 }
 
-// Statements and expressions are intentionally not fully modeled yet.
+// Statements and expressions are intentionally not fully modeled yet, so
+// these are plain aliases for now rather than interfaces: an interface here
+// with no added members would be identical to UirNode, which is what these
+// comments are for, spelling out that concrete kinds still need to be added.
 // A real implementation adds concrete node kinds here (UirIfStatement,
 // UirFunctionDeclaration, UirBinaryExpression, and so on) as language plugins
 // need them. Keeping this file small until then avoids guessing at a shape
 // that doesn't match what real languages actually need.
 
-export interface UirStatement extends UirNode {
-  // placeholder, narrowed by concrete statement kinds as they're added
-}
+export type UirStatement = UirNode;
 
-export interface UirExpression extends UirNode {
-  // placeholder, narrowed by concrete expression kinds as they're added
-}
+export type UirExpression = UirNode;
