@@ -4,10 +4,10 @@
 
 While UniSwitch is pre-1.0, only the latest release and the `main` branch receive security fixes. Once there's a 1.0, this section will list which major versions are supported.
 
-| Version | Supported |
-| ------- | --------- |
-| `main` (latest) | yes |
-| older releases | no |
+| Version         | Supported |
+| --------------- | --------- |
+| `main` (latest) | yes       |
+| older releases  | no        |
 
 ## Reporting a vulnerability
 

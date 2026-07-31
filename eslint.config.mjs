@@ -4,7 +4,13 @@ import prettierConfig from "eslint-config-prettier";
 
 export default tseslint.config(
   {
-    ignores: ["**/dist/**", "**/dist-installers/**", "**/node_modules/**", "**/android/**", "**/ios/**"],
+    ignores: [
+      "**/dist/**",
+      "**/dist-installers/**",
+      "**/node_modules/**",
+      "**/android/**",
+      "**/ios/**",
+    ],
   },
   ...tseslint.configs.recommended,
   {

@@ -23,9 +23,9 @@ See [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) for the full technical desi
 
 Early. The scaffolding, documentation, and CI in this repository exist before the conversion engine itself does. Supported languages will be tracked here as they land.
 
-| Source language | Target language | Status |
-| ---------------- | ---------------- | ------ |
-| _(none yet)_ | _(none yet)_ | planned |
+| Source language | Target language | Status  |
+| --------------- | --------------- | ------- |
+| _(none yet)_    | _(none yet)_    | planned |
 
 ## Project layout
 

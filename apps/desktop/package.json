@@ -24,7 +24,10 @@
     },
     "files": ["dist/**/*"],
     "linux": {
-      "target": ["AppImage", "deb"],
+      "target": [
+        "AppImage",
+        "deb"
+      ],
       "category": "Development"
     },
     "win": {

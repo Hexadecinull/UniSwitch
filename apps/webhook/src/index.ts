@@ -20,7 +20,9 @@ const deployScript = process.env.DEPLOY_SCRIPT || join(__dirname, "../../../depl
 const maxBodyBytes = 1_000_000; // a push payload is small JSON, 1MB is generous
 
 if (!secret) {
-  console.error("WEBHOOK_SECRET is not set. Refusing to start: an unauthenticated listener that can trigger a deploy is not safe to run.");
+  console.error(
+    "WEBHOOK_SECRET is not set. Refusing to start: an unauthenticated listener that can trigger a deploy is not safe to run.",
+  );
   process.exit(1);
 }
 

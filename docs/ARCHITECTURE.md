@@ -58,13 +58,13 @@ A language plugin is a package under `packages/languages/<name>` implementing th
 
 ```typescript
 interface LanguagePlugin {
-  id: string;                 // e.g. "python"
-  extensions: string[];       // e.g. [".py"]
+  id: string; // e.g. "python"
+  extensions: string[]; // e.g. [".py"]
   parse(source: string): ConcreteSyntaxTree;
   lower(cst: ConcreteSyntaxTree): UirModule;
   raise(uir: UirModule): ConcreteSyntaxTree;
   emit(cst: ConcreteSyntaxTree): string;
-  stdlibMap: StdlibMapping;   // see section 5
+  stdlibMap: StdlibMapping; // see section 5
 }
 ```
 

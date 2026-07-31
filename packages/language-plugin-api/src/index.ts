@@ -9,4 +9,10 @@ export type {
   StdlibMapping,
 } from "@uniswitch/core";
 
-export type { UirModule, UirStatement, UirExpression, Confidence, ConversionMeta } from "@uniswitch/core";
+export type {
+  UirModule,
+  UirStatement,
+  UirExpression,
+  Confidence,
+  ConversionMeta,
+} from "@uniswitch/core";
