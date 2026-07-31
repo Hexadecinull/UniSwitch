@@ -22,7 +22,9 @@
     "directories": {
       "output": "dist-installers"
     },
-    "files": ["dist/**/*"],
+    "files": [
+      "dist/**/*"
+    ],
     "linux": {
       "target": [
         "AppImage",
@@ -31,10 +33,14 @@
       "category": "Development"
     },
     "win": {
-      "target": ["nsis"]
+      "target": [
+        "nsis"
+      ]
     },
     "mac": {
-      "target": ["dmg"],
+      "target": [
+        "dmg"
+      ],
       "category": "public.app-category.developer-tools"
     }
   }

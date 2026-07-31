@@ -46,7 +46,9 @@ function readBody(req: IncomingMessage): Promise<Buffer> {
 
 function isValidSignature(rawBody: Buffer, signatureHeader: string | undefined): boolean {
   if (!signatureHeader || !signatureHeader.startsWith("sha256=")) return false;
-  const expected = createHmac("sha256", secret as string).update(rawBody).digest("hex");
+  const expected = createHmac("sha256", secret as string)
+    .update(rawBody)
+    .digest("hex");
   const expectedBuf = Buffer.from("sha256=" + expected);
   const givenBuf = Buffer.from(signatureHeader);
   if (expectedBuf.length !== givenBuf.length) return false;

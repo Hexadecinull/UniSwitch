@@ -3,11 +3,7 @@
 // so on). Re-exporting the relevant types here keeps that surface small and
 // lets it stay stable even as core's other internals change.
 
-export type {
-  LanguagePlugin,
-  ConcreteSyntaxTree,
-  StdlibMapping,
-} from "@uniswitch/core";
+export type { LanguagePlugin, ConcreteSyntaxTree, StdlibMapping } from "@uniswitch/core";
 
 export type {
   UirModule,
