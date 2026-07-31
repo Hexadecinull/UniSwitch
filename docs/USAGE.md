@@ -2,7 +2,7 @@
 
 This covers the CLI, the web app, and the desktop app. All three run the same conversion engine (see [`ARCHITECTURE.md`](./ARCHITECTURE.md)), so behavior is consistent across them.
 
-Before reading further: a UniSwitch conversion is not meant to be taken as final output without review. Read the conversion report every time. See section 4.
+Before reading further: UniSwitch is a proof of concept and will never produce a one-to-one, perfect conversion, that isn't achievable between real programming languages. A UniSwitch conversion is not meant to be taken as final output without review. Read the conversion report every time. See section 4.
 
 ## 1. CLI
 

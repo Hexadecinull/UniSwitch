@@ -2,6 +2,8 @@
 
 This document explains how UniSwitch converts code from one language to another, and just as importantly, what it does not try to do.
 
+**UniSwitch is a proof of concept, not a finished product, and it is not aiming to become one that outputs a perfect result.** A one-to-one, fully faithful conversion between two programming languages is not achievable in general, this isn't a current limitation to be engineered away later, it's a property of what programming languages are. UniSwitch's job is to get as close as it honestly can and be explicit about the gap, not to pretend the gap doesn't exist.
+
 ## 1. Goals and non-goals
 
 **Goal:** given source code in a supported language, produce equivalent source code in another supported language, plus a report of anything that could not be converted with confidence.

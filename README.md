@@ -2,6 +2,8 @@
 
 A universal programming language converter. UniSwitch parses source code in one language, builds a shared intermediate representation of it, and emits equivalent source code in another language.
 
+> **UniSwitch is a proof of concept.** It is not, and will never be, a perfect converter. A fully faithful, one-to-one translation from one programming language to another is not achievable in general, languages differ too fundamentally in memory model, type system, and standard library for that to be possible. UniSwitch tries its best and is honest about where it falls short, see the "What UniSwitch actually is" section below and [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md).
+
 Full documentation lives in [`/docs`](./docs/README.md). This file is the short version.
 
 ## What UniSwitch actually is
