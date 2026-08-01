@@ -11,6 +11,9 @@
     "@uniswitch/core": "workspace:*",
     "commander": "^15.0.0"
   },
+  "devDependencies": {
+    "@types/node": "^26.1.2"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit"

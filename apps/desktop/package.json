@@ -13,6 +13,7 @@
     "@uniswitch/core": "workspace:*"
   },
   "devDependencies": {
+    "@types/node": "^26.1.2",
     "electron": "^43.2.0",
     "electron-builder": "^26.15.3"
   },
